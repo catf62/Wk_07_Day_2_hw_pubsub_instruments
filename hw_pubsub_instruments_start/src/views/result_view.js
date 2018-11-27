@@ -13,13 +13,33 @@ ResultView.prototype.bindEvents = function(){
 
 ResultView.prototype.render = function(family){
   const header = document.createElement('h2')
+  const infoParagraph = document.createElement('p');
+  const instrumentList = document.createElement('ul');
+
+
   header.textContent = `${family.name}`;
-  const infoParagraph = document.createElement('p')
-  infoParagraph.textContent = `${family.desciption}`;
+  infoParagraph.textContent = `${family.description}`;
+
+  family.instruments.forEach(function(element){
+    const instrumentListElement = document.createElement('li');
+    instrumentListElement.textContent = `${element}`;
+    instrumentList.appendChild(instrumentListElement);
+  });
+
+
   // const instrumentList = document.createElement('ul')
   // instrumentList.
-  this.container.innerHTML = '';
+  // console.log(family);
+  // let varbl = '<h2>'+family.name+'</h2><p>'+family.description+'</p>'+
+  //   '<p><ol><li>beans</li></ol></p>';
+  // forEach  {
+  //   varbl += 'moooore';
+  // }
+
+  this.container.innerHTML = "";
+  this.container.appendChild(header);
   this.container.appendChild(infoParagraph);
+  this.container.appendChild(instrumentList);
 };
 
 module.exports = ResultView;
